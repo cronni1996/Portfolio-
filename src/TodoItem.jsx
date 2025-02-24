@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
+import './TodoItem.css';
 
 function TodoItem(props) {
-    const { todo, onDeleteTodo, onEditTodo, editingTodoId, editingTodoText, onSaveEditTodo, onCancelEditTodo, onToggleComplete, onEditDeadline, editingTodoDeadline, formatDate } = props;
-    const [showDetails, setShowDetails] = useState(false);
-
-    const toggleDetails = () => {
-        setShowDetails(!showDetails);
-    };
+    const {
+        todo,
+        onDeleteTodo,
+        onEditTodo,
+        editingTodoId,
+        editingTodoText,
+        onSaveEditTodo,
+        onCancelEditTodo,
+        onToggleComplete,
+        onEditDeadline,
+        editingTodoDeadline,
+        formatDate
+    } = props;
 
     return (
-        <li>
+        <li className="todo-item" key={todo.id}>
             {editingTodoId === todo.id ? (
                 <>
                     <input
@@ -28,20 +36,20 @@ function TodoItem(props) {
                 </>
             ) : (
                 <>
-                    <input
-                        type="checkbox"
-                        checked={todo.completed}
-                        onChange={() => onToggleComplete(todo.id)}
-                    />
-                    {todo.text}
-                    <button onClick={toggleDetails}>
-                        {showDetails ? 'Скрыть подробности' : 'Подробнее'}
-                    </button>
-                    {showDetails && (
+                    <label className="checkbox-container">
+                        <input
+                            type="checkbox"
+                            checked={todo.completed}
+                            onChange={() => onToggleComplete(todo.id)}
+                        />
+                        <span className="checkmark"></span>
+                    </label>
+                    <div className="todo-content">
+                        {todo.text}
                         <span className="todo-info">
-              (Приоритет: {todo.priority}, Создано: {formatDate(todo.createdAt)}, Дедлайн: {formatDate(todo.deadline)})
-            </span>
-                    )}
+                            (Приоритет: {todo.priority}, Создано: {formatDate(todo.createdAt)}, Дедлайн: {formatDate(todo.deadline)})
+                        </span>
+                    </div>
                     <button onClick={() => onEditTodo(todo.id, todo.text, todo.deadline)}>Редактировать</button>
                 </>
             )}

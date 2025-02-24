@@ -9,9 +9,9 @@ function App() {
     const [todos, setTodos] = useState(() => {
         const storedTodos = localStorage.getItem(LOCAL_STORAGE_KEY);
         return storedTodos ? JSON.parse(storedTodos) : [
-            { id: 1, text: 'Купить хлеб', completed: false, priority: 'medium', createdAt: Date.now(), deadline: null },
-            { id: 2, text: 'Заплатить за квартиру', completed: false, priority: 'high', createdAt: Date.now(), deadline: null },
-            { id: 3, text: 'Выгулять собаку', completed: false, priority: 'low', createdAt: Date.now(), deadline: null }
+            { id: 1, text: 'Купить хлеб', completed: false, priority: 'medium', createdAt: Date.now() },
+            { id: 2, text: 'Заплатить за квартиру', completed: false, priority: 'high', createdAt: Date.now() },
+            { id: 3, text: 'Выгулять собаку', completed: false, priority: 'low', createdAt: Date.now() }
         ];
     });
 
@@ -21,7 +21,6 @@ function App() {
 
     const [editingTodoId, setEditingTodoId] = useState(null);
     const [editingTodoText, setEditingTodoText] = useState("");
-    const [editingTodoDeadline, setEditingTodoDeadline] = useState(null);
 
     const handleAddTodo = (text, priority) => {
         const newTodo = {
@@ -29,8 +28,7 @@ function App() {
             text: text,
             completed: false,
             priority: priority,
-            createdAt: Date.now(),
-            deadline: null
+            createdAt: Date.now()
         };
         setTodos([...todos, newTodo]);
     };
@@ -39,29 +37,26 @@ function App() {
         setTodos(todos.filter(todo => todo.id !== id));
     };
 
-    const handleEditTodo = (id, text, deadline) => {
+    const handleEditTodo = (id, text) => {
         setEditingTodoId(id);
         setEditingTodoText(text);
-        setEditingTodoDeadline(deadline);
     };
 
     const handleSaveEditTodo = (id) => {
         const updatedTodos = todos.map(todo => {
             if (todo.id === id) {
-                return { ...todo, text: editingTodoText, deadline: editingTodoDeadline };
+                return { ...todo, text: editingTodoText };
             }
             return todo;
         });
         setTodos(updatedTodos);
         setEditingTodoId(null);
         setEditingTodoText("");
-        setEditingTodoDeadline(null);
     };
 
     const handleCancelEditTodo = () => {
         setEditingTodoId(null);
         setEditingTodoText("");
-        setEditingTodoDeadline(null);
     };
 
     const handleToggleComplete = (id) => {
@@ -74,10 +69,6 @@ function App() {
         setTodos(updatedTodos);
     };
 
-    const handleEditDeadline = (id, deadline) => {
-        setEditingTodoDeadline(deadline);
-    };
-
     const formatDate = (timestamp) => {
         if (!timestamp) return '';
         return new Date(timestamp).toLocaleDateString();
@@ -85,6 +76,10 @@ function App() {
 
     return (
         <div className="app-container">
+            <header>
+                <p class ="textToDo">To-Do List</p>
+            </header>
+            <AddTodoForm onAddTodo={handleAddTodo} />
             <TodoList
                 todos={todos}
                 onDeleteTodo={handleDeleteTodo}
@@ -95,10 +90,8 @@ function App() {
                 onCancelEditTodo={handleCancelEditTodo}
                 onToggleComplete={handleToggleComplete}
                 formatDate={formatDate}
-                onEditDeadline={handleEditDeadline}
-                editingTodoDeadline={editingTodoDeadline}
             />
-            <AddTodoForm onAddTodo={handleAddTodo} />
+
         </div>
     );
 }

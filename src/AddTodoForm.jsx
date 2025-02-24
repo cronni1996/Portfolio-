@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
+import './AddTodoForm.css';
 
 function AddTodoForm(props) {
     const [newTodoText, setNewTodoText] = useState("");
     const [priority, setPriority] = useState("medium");
-    const [deadline, setDeadline] = useState(""); // Добавляем состояние для дедлайна
+    const [deadline, setDeadline] = useState("");
 
     const handleAddTodo = () => {
         if (newTodoText.trim() !== "") {
-            props.onAddTodo(newTodoText, priority, deadline); // Передаем дедлайн
+            props.onAddTodo(newTodoText, priority, deadline);
             setNewTodoText("");
             setPriority("medium");
-            setDeadline(""); // Очищаем поле дедлайна
+            setDeadline("");
         }
     };
 
@@ -23,7 +24,7 @@ function AddTodoForm(props) {
     };
 
     const handleDeadlineChange = (event) => {
-        setDeadline(event.target.value); // Обновляем состояние дедлайна
+        setDeadline(event.target.value);
     };
 
     return (
@@ -39,12 +40,10 @@ function AddTodoForm(props) {
                 <option value="medium">Средний</option>
                 <option value="high">Высокий</option>
             </select>
-            <input // Добавляем поле для выбора дедлайна
-                type="date"
-                value={deadline}
-                onChange={handleDeadlineChange}
-            />
-            <button onClick={handleAddTodo}>Добавить</button>
+
+            <button onClick={handleAddTodo}>
+                <i className="fas fa-plus"></i> Добавить
+            </button>
         </section>
     );
 }

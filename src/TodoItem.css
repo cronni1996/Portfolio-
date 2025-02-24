@@ -1,0 +1,124 @@
+.todo-item {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: row; /* Изменяем направление на горизонтальное */
+    align-items: center; /* Выравниваем элементы по вертикали */
+    justify-content: space-between;
+    font-size: 16px;
+}
+
+.todo-item:last-child {
+    border-bottom: none;
+}
+
+.todo-item > * {
+    margin-right: 10px;
+    margin-bottom: 0; /* Убираем отступы снизу */
+}
+
+.todo-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.todo-info {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #a1a1a1;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    display: none; /* Hidden by default */
+}
+
+.todo-item:hover .todo-info {
+    opacity: 1;
+    display: inline;
+}
+
+/* details button*/
+.details-button {
+    background-color: transparent; /* Прозрачный фон */
+    border: 1px solid #6c757d; /* Серый цвет рамки */
+    color: #b5b8bd; /* Серый цвет текста */
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease; /* Плавный переход для всех свойств */
+}
+
+.todo-item:hover .details-button {
+    background-color: #c1c4c6; /* Серый цвет фона при наведении */
+    color: #fff; /* Белый цвет текста при наведении */
+}
+
+.details-button:focus {
+    outline: none; /* Убираем стандартную обводку */
+    box-shadow: 0 0 5px rgba(108, 117, 125, 0.5); /* Добавляем тень */
+}
+
+/* Кастомные стили для чекбоксов */
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 0;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Скрываем стандартный чекбокс */
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Создаем новый чекбокс */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: #eee;
+    border-radius: 3px;
+}
+
+/* При наведении на контейнер */
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* Когда чекбокс отмечен, добавляем синий фон */
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Создаем индикатор (галочку) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Стилизуем галочку */
+.checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

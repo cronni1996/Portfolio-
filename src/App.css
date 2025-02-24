@@ -1,8 +1,8 @@
-/* Light theme (default) */
+/* Общие стили */
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: #121212; /* Темный фон */
+  color: #fff; /* Светлый текст */
   margin: 0;
   padding: 0;
   display: flex;
@@ -13,44 +13,15 @@ body {
 
 .app-container {
   width: 100%;
-  max-width: 800px;
-  margin: 0;
+  max-width: 600px; /* Уменьшаем ширину */
+  margin: 20px;
   padding: 30px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background-color: #212121; /* Контейнер темнее фона */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Мягкая тень */
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-/* Dark theme */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #1e1e1e;
-    color: #d4d4d4;
-  }
-
-  .app-container {
-    background-color: #252526;
-    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-  }
-
-  .add-todo input[type="text"],
-  .add-todo select,
-  input[type="date"] {
-    background-color: #333;
-    color: #fff;
-    border-color: #555;
-  }
-
-  .todo-list li {
-    border-bottom-color: #333;
-  }
-
-  .todo-list .todo-info { /* Стили для информации в темной теме */
-    color: #9e9e9e;
-  }
+  align-items: stretch; /* Растягиваем элементы на всю ширину */
 }
 
 /* Common styles for sections */
@@ -72,27 +43,31 @@ body {
 }
 
 .add-todo input[type="text"],
-.add-todo select {
+.add-todo select,
+input[type="date"] {
   flex-grow: 1;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 10px;
+  border: none; /* Убираем рамки */
+  border-radius: 4px;
   font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #333; /* Более тёмный фон */
+  color: #fff;
 }
 
 .add-todo button {
-  padding: 12px 20px;
+  padding: 10px 15px;
   border: none;
-  background-color: #28a745;
+  background-color: #00bcd4; /* Teal цвет */
   color: white;
-  border-radius: 8px;
+  border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.2s ease;
 }
 
 .add-todo button:hover {
-  background-color: #218838;
+  background-color: #0097a7; /* Более тёмный Teal */
 }
 
 /* TodoList styles */
@@ -102,12 +77,13 @@ body {
 }
 
 .todo-list li {
-  padding: 12px;
-  border-bottom: 1px solid #eee;
-  display: grid;
-  grid-template-columns: auto 1fr auto auto auto;
+  padding: 10px;
+  border-bottom: 1px solid #333; /* Более тёмный разделитель */
+  display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: space-between;
+  font-size: 14px; /* Уменьшаем шрифт */
+  font-weight: 300; /* Делаем шрифт более тонким */
 }
 
 .todo-list li:last-child {
@@ -118,19 +94,18 @@ body {
   margin-right: 10px;
 }
 
-/* Button styles */
 .todo-list button {
-  background-color: #dc3545;
+  background-color: #f44336; /* Красный цвет */
   color: white;
   border: none;
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 6px 10px;
+  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .todo-list button:hover {
-  background-color: #c82333;
+  background-color: #d32f2f; /* Более темный красный цвет */
 }
 
 .todo-list input[type="checkbox"] {
@@ -138,19 +113,34 @@ body {
   transform: scale(1.2);
 }
 
+/* Скрываем и показываем информацию о задаче */
 .todo-list .todo-info {
-  opacity: 0; /* Скрываем элемент */
-  transition: opacity 0.2s ease-in-out; /* Добавляем плавный переход */
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  display: none; /* Скрываем по умолчанию */
 }
 
 .todo-list li:hover .todo-info {
-  opacity: 1; /* Показываем элемент при наведении */
+  opacity: 1;
 }
 
 input[type="date"] {
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 10px;
+  border: 1px solid #555;
+  border-radius: 4px;
+  font-size: 14px;
   font-family: 'Roboto', sans-serif;
+  background-color: #333;
+  color: #fff;
+}
+.textToDo{
+  font-size: 3em;
+  text-align: center;
+  margin-bottom: 30px;
+  /* --- Применяем новые стили для заголовка --- */
+  font-family: 'Oswald', sans-serif;;
+  color: #2A9D8F;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
