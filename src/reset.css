@@ -1,0 +1,38 @@
+/* Reset some basic elements */
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Box-sizing border-box makes layout predictable */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/* Basic body settings */
+body {
+    font-family: sans-serif;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling was not intended */
+ul[class],
+ol[class] {
+    list-style: none;
+}
+
+/* Make images easier to work with */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Natural flow and alignment */
+html, body {
+    height: 100%;
+}
