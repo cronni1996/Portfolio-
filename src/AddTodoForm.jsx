@@ -11,7 +11,6 @@ function AddTodoForm(props) {
             props.onAddTodo(newTodoText, priority, deadline);
             setNewTodoText("");
             setPriority("medium");
-            setDeadline("");
         }
     };
 
@@ -23,9 +22,7 @@ function AddTodoForm(props) {
         setPriority(event.target.value);
     };
 
-    const handleDeadlineChange = (event) => {
-        setDeadline(event.target.value);
-    };
+
 
     return (
         <section className="add-todo">
