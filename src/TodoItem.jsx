@@ -47,7 +47,7 @@ function TodoItem(props) {
                     <div className="todo-content">
                         {todo.text}
                         <span className="todo-info">
-                            (Приоритет: {todo.priority}, Создано: {formatDate(todo.createdAt)}, Дедлайн: {formatDate(todo.deadline)})
+                            (Приоритет: {todo.priority}, Создано: {formatDate(todo.createdAt)})
                         </span>
                     </div>
                     <button onClick={() => onEditTodo(todo.id, todo.text, todo.deadline)}>Редактировать</button>
